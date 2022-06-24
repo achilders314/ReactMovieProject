@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
-
-const Navbar = ({searchText, setSearchText}) => {
+import { useNavigate, Link } from "react-router-dom";
 
 
-    const updateSearchText = (e) => {
-      setSearchText(e.target.value)
+const Navbar = ({searchText, setSearchText}, {searchState, setSearchState}) => {
+  const navigate = useNavigate()
+  searchState=false;
+
+    const updateSearchText = (e) => { 
+      navigate('search');
+      setSearchText(e.target.value);
+    }
+
+    const updateSearchState = (e) => {
+      setSearchState(true);
     }
 
   return(
+
       <nav className="navbar navbar-expand-lg bg-light">
     <div className="container-fluid">
       <Link className="navbar-brand" to="/">Movie Browser</Link>
@@ -26,16 +34,17 @@ const Navbar = ({searchText, setSearchText}) => {
             <Link className="nav-link disabled" to="/">Coming Soon</Link>
           </li>
         </ul>
-        <form className="d-flex" role="search">
-          <input className="form-control me-2" 
+        <form className="d-flex justify-content-end" role="search">
+          <input className="form-control me-2 ml-auto w-25" 
                  type="search" 
                  placeholder="Search" 
                  aria-label="Search" 
                  value={searchText}
                  onChange={updateSearchText}
                  />
-          <button className="btn btn-outline-success" 
-                  type="submit">Search</button>
+          <button className="btn btn-outline-success ml-auto" 
+                  type="submit"
+                  >Search</button>
         </form>
       </div>
     </div>
