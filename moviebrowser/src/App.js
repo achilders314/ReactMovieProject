@@ -41,9 +41,6 @@ function App() {
           {setSearchResults &&
           <Route path="/movies/:id" element={<MovieView />} />
           }
-          {!setSearchResults &&
-          <Route path="/noresults" element={<NoResults/>} />
-          }
           <Route path="*" element={<NotFound404 />} />
       </Routes>
     
