@@ -31,4 +31,4 @@ An IMDB-like website where users can search for their favorite movie titles and 
 
 ### Movie Page Displaying More Info
 
-![GIF of Movie View](https://i.ibb.co/d25cVvQ/Movie-View.gif)
+![Movie View](https://user-images.githubusercontent.com/102301042/175789701-35058114-e66e-4bbc-9431-4de27f8624fa.gif)
