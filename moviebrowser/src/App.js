@@ -7,14 +7,13 @@ import SearchView from './components/SearchView';
 import MovieView from './components/MovieView';
 import NoResults from './components/NoResults'
 import NotFound404 from './components/NotFound404';
-import { Routes, Route, Redirect } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const [searchState, setSearchState] = useState('');
 
   useEffect(() => {
     if(searchText){
@@ -22,7 +21,6 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setSearchResults(data.results);
-        setSearchState(true);
       })
     }
   }, [searchText]);
@@ -47,7 +45,6 @@ function App() {
           <Route path="/noresults" element={<NoResults/>} />
           }
           <Route path="*" element={<NotFound404 />} />
-          <Route path="/movies/" element={<NotFound404 />} />
       </Routes>
     
     </div>

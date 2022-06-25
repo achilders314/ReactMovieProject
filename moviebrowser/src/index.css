@@ -41,6 +41,8 @@ code {
 
 .card {
   width: 300px;
+  height: 95%;
+
 }
 
 .bitmojiImages {
@@ -56,3 +58,10 @@ code {
   font-size: 1.8rem;
 }
 
+.movie-details {
+  font-size: 1.2rem;
+}
+
+.movie-title {
+  font-weight: bold;
+}

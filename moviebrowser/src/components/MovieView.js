@@ -30,6 +30,7 @@ const MovieView = () => {
                 const posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
                 const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`;
 
+
                 return (
                    <>
                     <Hero text={movieDetails.original_title} backdrop={backdropUrl} />
@@ -44,8 +45,14 @@ const MovieView = () => {
                                 }
                             </div>
                             <div className="col-md-9">
-                                <h2>{movieDetails.original_title}</h2>
-                                <p className="lead">{movieDetails.overview}</p>
+                                <h2 className="movie-title">{movieDetails.original_title}</h2>
+                                <p className='movie-details'>Movie Synopsis: {movieDetails.overview}</p>
+                                <p className='movie-details'>Genres: {movieDetails.genres[0].name}</p>
+                                <p className='movie-details'>Production Companies: {movieDetails.production_companies[0].name}</p>
+                                <p className='movie-details'>Release Date: {movieDetails.release_date}</p>
+                                <p className='movie-details'>Run Time: {movieDetails.runtime} minutes</p>
+                                <p className='movie-details'>Budget: ${movieDetails.budget.toLocaleString("en-US")}</p>
+                                <p className='movie-details'>Revenue: ${movieDetails.revenue.toLocaleString("en-US")}</p>
                             </div>
 
                         </div>

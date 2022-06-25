@@ -7,7 +7,6 @@ const MovieCard = ({movie}) => {
   const detailUrl = `/movies/${movie.id}`
   const movieDesc = movie.overview;
   const previewDesc = movieDesc.substring(0, 80);
-  // const unavailableUrl = 
 
   return(
     <div className="card m-3">
@@ -29,7 +28,7 @@ const MovieCard = ({movie}) => {
           <a href={detailUrl} className="btn btn-primary">See more details  </a>
        </div>
       }
-      {!movie &&
+      {movie.id.length === 0 &&
         <div className="lead error-not-found">
           <p>Hmm...there seem to be no movies with that name.</p>
           <a href="https://www.wikihow.com/Write-a-Screenplay" target="_blank" rel="noreferrer">Maybe consider writing your own?</a>
@@ -45,17 +44,14 @@ const SearchView = ({keyword, searchResults}) => {
     const title = `You are searching for "${keyword}"`
     
     const resultsHtml = searchResults.map((obj, i) => {
-      return (
-        <div key={i}>
-        {obj &&
-           <MovieCard movie={obj} />
-        }
-        </div>
-
-      )
-    })
+          return(
+          <div key={i}>
+             <MovieCard movie={obj} />
+          </div>
+          );
+    });
     
-    if(title!==null){
+    if(resultsHtml.length>0){
     return(
       <>
         <Hero text={title} />
@@ -67,11 +63,14 @@ const SearchView = ({keyword, searchResults}) => {
       </>
     )
   }
-    if(keyword==="") {
+    else if(resultsHtml.length<=0) {
+     return(
       <>
-        <Hero text="No result" />
-        <div>There was no search result</div>
+        <Hero text="No results found" />
+        <p className="m-5">Hmmm there seems to be no movies that match your search...</p>
+        <p className="m-5">Would you like to <a href="https://www.wikihow.com/Write-a-Screenplay">write your own?</a></p>
       </>
+      );
     }
   }
 

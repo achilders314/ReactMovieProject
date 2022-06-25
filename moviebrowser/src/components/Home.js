@@ -3,7 +3,8 @@ import Hero from './Hero'
 const Home = () => {
     return(
       <>
-        <Hero text="Welcome to Movie Database" /><div className='container'>
+        <Hero text="Welcome to Movie Database" backdrop="https://onesheetdesign.com/wp-content/uploads/movie_poster_design.jpg"/>
+        <div className='container'>
           <div className='row'>
             <div className='col-lg-8 offset-lg-2 my-5 text-center'>
               <p className='lead'>
