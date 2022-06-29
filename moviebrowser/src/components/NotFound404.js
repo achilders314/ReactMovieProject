@@ -9,7 +9,7 @@ const NotFound404 = () => {
                 Oops that page doesn't exist. Try again.
                 </p>
                 <img src="https://i.ibb.co/W6YJHpv/nope.png" alt="page designer saying nope" className="bitmojiImages" />
-                <a href="/" class="btn-primary">Go to Home</a>
+                <p><a href="/" class="btn-primary">Go to Home</a></p>
               </div>
       </div>
     )

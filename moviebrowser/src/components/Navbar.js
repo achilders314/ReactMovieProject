@@ -29,7 +29,7 @@ const Navbar = ({searchText, setSearchText}, {searchState, setSearchState}) => {
             <Link className="nav-link" to="/about">About</Link>
            </li>
            <li className="nav-item">
-            <Link className="nav-link disabled" to="/" tabindex="-1" aria-disabled="true">Coming Soon</Link>
+            <Link className="nav-link disabled" to="/" tabIndex="-1" aria-disabled="true">Coming Soon</Link>
            </li>
           </ul>
         <form className="d-flex justify-content-end" role="search">

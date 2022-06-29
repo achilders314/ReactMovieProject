@@ -6,7 +6,7 @@ import AboutView from './components/AboutView';
 import SearchView from './components/SearchView';
 import MovieView from './components/MovieView';
 import NotFound404 from './components/NotFound404';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate} from 'react-router-dom';
 
 
 function App() {
@@ -40,7 +40,8 @@ function App() {
           {setSearchResults &&
           <Route path="/movies/:id" element={<MovieView />} />
           }
-          <Route path="/*" component={<NotFound404 />} />
+          <Route path="/404" element={<NotFound404 />} />
+          <Route path="/*" element={ <Navigate to="/404" />} />
       </Routes>
     
     </div>
