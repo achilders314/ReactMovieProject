@@ -2,11 +2,18 @@ import Hero from './Hero'
 // import Link from 'react';
 //TMDB API Key b0a866768c2042164cb773a7192214df
 //Example link for movie searches = https://api.themoviedb.org/3/search/movie?api_key=b0a866768c2042164cb773a7192214df&language=en-US&query=star%20wars&page=1&include_adult=false
+
 const MovieCard = ({movie}) => {
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const detailUrl = `./movies/${movie.id}`
+  const detailUrl = `/movies/${movie.id}`
   const movieDesc = movie.overview;
-  const previewDesc = movieDesc.substring(0, 80);
+  const previewDesc = movieDesc.substring(0, 80); //cuts overview to 80 chars or less just for the preview on the card
+
+
+
+  const setLocalStorage = () => {
+    localStorage.setItem('movieID', JSON.stringify(movie));
+  }
 
   return(
     <div className="card m-3">
@@ -25,7 +32,7 @@ const MovieCard = ({movie}) => {
           {!previewDesc &&
           <p className="card-text">No description available.</p>
           }
-          <a href={detailUrl} className="btn btn-primary">See more details  </a>
+          <a href={detailUrl} className="btn btn-primary" onClick={setLocalStorage}>See more details  </a>
        </div>
       }
       {movie.id.length === 0 &&
@@ -42,6 +49,7 @@ const MovieCard = ({movie}) => {
 
 const SearchView = ({keyword, searchResults}) => {
     const title = `You are searching for "${keyword}"`
+
     
     const resultsHtml = searchResults.map((obj, i) => {
           return(
@@ -63,10 +71,11 @@ const SearchView = ({keyword, searchResults}) => {
       </>
     )
   }
-    else if(resultsHtml.length<=0) {
+    else if(resultsHtml.length===0) {
      return(
       <>
         <Hero text="No results found" />
+        <img src="https://i.ibb.co/6bQqtS7/nooooooo.png" alt="Person screaming No" className="bitmojiImages"/>
         <p className="m-5">Hmmm there seems to be no movies that match your search...</p>
         <p className="m-5">Would you like to <a href="https://www.wikihow.com/Write-a-Screenplay">write your own?</a></p>
       </>

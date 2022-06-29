@@ -5,7 +5,6 @@ import Home from './components/Home';
 import AboutView from './components/AboutView';
 import SearchView from './components/SearchView';
 import MovieView from './components/MovieView';
-import NoResults from './components/NoResults'
 import NotFound404 from './components/NotFound404';
 import { Routes, Route } from 'react-router-dom';
 
@@ -32,7 +31,7 @@ function App() {
       <Navbar searchText={searchText}
               setSearchText={setSearchText} />
       <Routes>
-          <Route path="/" element={<Home />} exact />
+          <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<AboutView />} />
           <Route path="/search" 
                  element={<SearchView 
@@ -41,7 +40,7 @@ function App() {
           {setSearchResults &&
           <Route path="/movies/:id" element={<MovieView />} />
           }
-          <Route path="*" element={<NotFound404 />} />
+          <Route path="/*" component={<NotFound404 />} />
       </Routes>
     
     </div>

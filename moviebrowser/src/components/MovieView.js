@@ -1,32 +1,29 @@
 import Hero from './Hero'
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
 
 const MovieView = () => {
-    const {id} = useParams()
-
+    let id = JSON.parse(localStorage.getItem('movieID'));
     const [movieDetails, setMovieDetails] = useState({});
 
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        console.log('make an api request')
-    
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=b0a866768c2042164cb773a7192214df&language=en-US`)
-            .then(response =>response.json())
+       fetch(`https://api.themoviedb.org/3/movie/${id.id}?api_key=b0a866768c2042164cb773a7192214df&language=en-US`)
+            .then(response => response.json())
             .then(data => {
-                setMovieDetails(data)
-                setIsLoading(false)
+                console.log(data);
+                setMovieDetails(data);
+                setIsLoading(false);
             })
-        }, [id])
+        }, [id]);
 
         function renderMovieDetails() {
             if(isLoading) {
                 return <Hero text="Loading..." />
             }
             if(movieDetails) {
-                //TODO: Deal with possible missing image
                 const posterPath = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
                 const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`;
 
