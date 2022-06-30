@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 const MovieView = () => {
     let id = JSON.parse(localStorage.getItem('movieID'));
+    
     const [movieDetails, setMovieDetails] = useState({});
 
     const [isLoading, setIsLoading] = useState(true);
