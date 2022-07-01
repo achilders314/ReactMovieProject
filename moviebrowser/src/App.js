@@ -31,17 +31,17 @@ function App() {
       <Navbar searchText={searchText}
               setSearchText={setSearchText} />
       <Routes>
-          <Route exact path="/react_movie_app/" element={<Home />} />
-          <Route path="/react_movie_app/about" element={<AboutView />} />
-          <Route path="/react_movie_app/search" 
+          <Route exact path="/moviebrowser/" element={<Home />} />
+          <Route path="/moviebrowser/about" element={<AboutView />} />
+          <Route path="/moviebrowser/search" 
                  element={<SearchView 
                  keyword={searchText} 
                  searchResults={searchResults} />} />
           {setSearchResults &&
-          <Route path="/react_movie_app/movies/:id" element={<MovieView />} />
+          <Route path="/moviebrowser/movies/:id" element={<MovieView />} />
           }
-          <Route path="/react_movie_app/404" element={<NotFound404 />} />
-          <Route path="/react_movie_app/*" element={ <Navigate to="/404" />} />
+          <Route path="/moviebrowser/404" element={<NotFound404 />} />
+          <Route path="/moviebrowser/*" element={ <Navigate to="/404" />} />
       </Routes>
     
     </div>

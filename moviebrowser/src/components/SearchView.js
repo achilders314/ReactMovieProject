@@ -5,7 +5,7 @@ import Hero from './Hero'
 
 const MovieCard = ({movie}) => {
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const detailUrl = `/react_movie_app/movies/${movie.id}`
+  const detailUrl = `/moviebrowser/movies/${movie.id}`
   const movieDesc = movie.overview;
   const previewDesc = movieDesc.substring(0, 80); //cuts overview to 80 chars or less just for the preview on the card
 
