@@ -10,16 +10,19 @@ const MovieView = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-       fetch(`https://api.themoviedb.org/3/movie/${id.id}?api_key=b0a866768c2042164cb773a7192214df&language=en-US`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setMovieDetails(data);
-                setIsLoading(false);
-            })
-        }, [id]);
 
+    useEffect(() => {
+       console.log("make a request");
+       const waitForIt = async () => {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${id.id}?api_key=b0a866768c2042164cb773a7192214df&language=en-US`);
+            const response = await res.json();
+                console.log(response);
+                setMovieDetails(response);
+                setIsLoading(false);
+        };
+        waitForIt();
+        }, [id]);
+    
         function renderMovieDetails() {
             if(isLoading) {
                 return <Hero text="Loading..." />
@@ -45,7 +48,7 @@ const MovieView = () => {
                             <div className="col-md-9">
                                 <h2 className="movie-title">{movieDetails.original_title}</h2>
                                 <p className='movie-details'>Movie Synopsis: {movieDetails.overview}</p>
-                                <p className='movie-details'>Genres: {movieDetails.genres[0].name}</p>
+                                <p className='movie-details'>Genre: {movieDetails.genres[0].name}</p>
                                 <p className='movie-details'>Production Companies: {movieDetails.production_companies[0].name}</p>
                                 <p className='movie-details'>Release Date: {movieDetails.release_date}</p>
                                 <p className='movie-details'>Run Time: {movieDetails.runtime} minutes</p>

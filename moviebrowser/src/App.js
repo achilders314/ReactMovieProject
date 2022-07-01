@@ -5,7 +5,7 @@ import Home from './components/Home';
 import AboutView from './components/AboutView';
 import SearchView from './components/SearchView';
 import MovieView from './components/MovieView';
-import NotFound404 from './components/NotFound404';
+// import NotFound404 from './components/NotFound404';
 import { Routes, Route, Navigate} from 'react-router-dom';
 
 
@@ -31,17 +31,17 @@ function App() {
       <Navbar searchText={searchText}
               setSearchText={setSearchText} />
       <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<AboutView />} />
-          <Route path="/search" 
+          <Route exact path="/react_movie_app/" element={<Home />} />
+          <Route path="/react_movie_app/about" element={<AboutView />} />
+          <Route path="/react_movie_app/search" 
                  element={<SearchView 
                  keyword={searchText} 
                  searchResults={searchResults} />} />
           {setSearchResults &&
-          <Route path="/movies/:id" element={<MovieView />} />
+          <Route path="/react_movie_app/movies/:id" element={<MovieView />} />
           }
-          <Route path="/404" element={<NotFound404 />} />
-          <Route path="/*" element={ <Navigate to="/404" />} />
+          {/* <Route path="/react_movie_app/404" element={<NotFound404 />} />
+          <Route path="/react_movie_app/*" element={ <Navigate to="/404" />} /> */}
       </Routes>
     
     </div>
