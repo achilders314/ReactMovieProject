@@ -10,18 +10,21 @@ const MovieView = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-
-    useEffect(() => {
-       console.log("make a request");
-       const waitForIt = async () => {
+    const waitForIt = async () => {
         const res = await fetch(`https://api.themoviedb.org/3/movie/${id.id}?api_key=b0a866768c2042164cb773a7192214df&language=en-US`);
             const response = await res.json();
                 console.log(response);
                 setMovieDetails(response);
                 setIsLoading(false);
         };
-        waitForIt();
-        }, [id]);
+    waitForIt();
+
+    // useEffect(() => {
+    //    console.log("make a request");
+    //     waitForIt();
+    //     }, [id]);
+
+
     
         function renderMovieDetails() {
             if(isLoading) {
@@ -62,8 +65,8 @@ const MovieView = () => {
                 )
             }
         }
-    
-     return renderMovieDetails();
+        return renderMovieDetails();
+ 
   };
 
   export default MovieView;

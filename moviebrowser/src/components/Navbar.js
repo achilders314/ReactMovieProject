@@ -16,7 +16,7 @@ const Navbar = ({searchText, setSearchText}, {searchState, setSearchState}) => {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-        <a className="navbar-brand" href="/moviebrowser/" onClick="localStorage.clear()">Movie Database</a>
+        <a className="navbar-brand" href="/moviebrowser/">Movie Database</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -32,7 +32,7 @@ const Navbar = ({searchText, setSearchText}, {searchState, setSearchState}) => {
             <Link className="nav-link disabled" to="/" tabIndex="-1" aria-disabled="true">Coming Soon</Link>
            </li>
           </ul>
-        <form className="d-flex justify-content-end" role="search">
+        <form className="d-flex justify-content-start justify-content-lg-end" role="search">
           <input className="form-control me-2 ml-auto w-25" 
                  type="search"
                  id="search-box"
